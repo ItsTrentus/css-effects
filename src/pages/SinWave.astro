@@ -1,0 +1,48 @@
+---
+import '../styles/global.scss';
+---
+
+<html>
+    <body>
+        <main>
+            <div class="container">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </main>
+    </body>
+</html>
+
+<style lang="scss">
+    .container {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .circle {
+        width: 50px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: whitesmoke;
+        animation: rise-and-fall 1s ease-in-out alternate infinite;
+    }
+
+    @keyframes rise-and-fall {
+        to {
+            transform: translateY(500%);
+        }
+    }
+    @for $i from 1 through 10 {
+        .circle:nth-of-type(#{$i}) {
+            animation-delay: calc(sin(15deg) * #{$i}s);
+        }
+    }
+</style>

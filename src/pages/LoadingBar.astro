@@ -1,0 +1,65 @@
+<script>
+    const progressBar = document.querySelector('.progress-bar') as Element;
+    let flipVal = false;
+    setInterval(() => {
+        const computedStyle = getComputedStyle(progressBar);
+        const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
+        if (width >= 100) {
+            flipVal = true;
+        }
+        if (width <= 0) {
+            flipVal = false;
+        }
+        if (flipVal) {
+            progressBar.style.setProperty('--width', width - 0.1);
+        } else {
+            progressBar.style.setProperty('--width', width + 0.1);
+        }
+        progressBar.dataset.label = `Loading... ${width}%`;
+    }, 5);
+</script>
+
+<html>
+    <body>
+        <main>
+            <div class="container">
+                <div class="progress-bar" style="--width: 1" data-label="Loading..."></div>
+            </div>
+        </main>
+    </body>
+</html>
+
+<style lang="scss">
+    @import '../styles/global.scss';
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .progress-bar {
+        width: 1500px;
+        height: 3em;
+        background-color: black;
+        border-radius: 10em;
+        color: white;
+        position: relative;
+    }
+
+    .progress-bar::before {
+        content: attr(data-label);
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0.5em;
+        left: 0.5em;
+        bottom: 0.5em;
+        min-width: 1em;
+        width: calc(var(--width, 0) * 1%);
+        max-width: calc(100% - 1em);
+        background-color: #069;
+        border-radius: 2em;
+        padding: 1em;
+    }
+</style>

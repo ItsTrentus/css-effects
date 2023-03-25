@@ -1,0 +1,61 @@
+---
+import '../styles/global.scss';
+---
+
+<html>
+    <body>
+        <main>
+            <div class="container">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </main>
+    </body>
+</html>
+
+<style lang="scss">
+    .container {
+        width: 100px;
+        aspect-ratio: 1;
+        background: transparent;
+        position: relative;
+        // border: solid 1px limegreen;
+    }
+
+    :root {
+        --size: 50px;
+        --degrees: 15deg;
+        --offset: 100px;
+    }
+
+    .circle {
+        width: var(--size);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: whitesmoke;
+        position: absolute;
+        top: calc(var(--size) / 2);
+        left: calc(var(--size) / 2);
+        animation: circle 1s linear infinite;
+        transform: translate(calc(cos(var(--degrees)) * var(--offset)), calc(sin(var(--degrees)) * var(--offset)));
+        animation: spin 5s linear infinite;
+    }
+
+    @keyframes spin {
+        to {
+            rotate: 360deg;
+        }
+    }
+
+    @for $i from 1 through 8 {
+        .circle:nth-of-type(#{$i}) {
+            --degrees: #{$i} * 360deg / 8;
+        }
+    }
+</style>

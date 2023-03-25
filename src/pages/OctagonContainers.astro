@@ -1,0 +1,41 @@
+<html>
+    <body>
+        <main>
+            <div class="octagon"></div>
+        </main>
+    </body>
+</html>
+
+<style lang="scss">
+    $color-primary: #ff0000;
+
+    @import '../styles/global.scss';
+    .octagon {
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: relative;
+    }
+    .octagon:before {
+        content: '';
+        width: 100px;
+        height: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-bottom: 29px solid red;
+        border-left: 29px solid #222;
+        border-right: 29px solid #222;
+    }
+    .octagon:after {
+        content: '';
+        width: 100px;
+        height: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-top: 29px solid red;
+        border-left: 29px solid #222;
+        border-right: 29px solid #222;
+    }
+</style>

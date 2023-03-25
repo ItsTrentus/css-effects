@@ -1,0 +1,88 @@
+<html>
+    <body>
+        <main>
+            <div class="container">
+                <div class="box box-1">
+                    <p>linear</p>
+                </div>
+                <div class="box box-2">
+                    <p>ease-in</p>
+                </div>
+                <div class="box box-3">
+                    <p>ease-out</p>
+                </div>
+                <div class="box box-4">
+                    <p>ease-in-out</p>
+                </div>
+                <div class="box box-5">
+                    <p>cubic bezier</p>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
+
+<style lang="scss">
+    *,
+    *::after,
+    *::before {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+        background-color: #333;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    // Browser uses GPU for Transform and Opacity
+
+    .box {
+        height: 150px;
+        width: 20%;
+        // transition: <property> <timing> <timing-function> <delay>;
+        transition: width 1s;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3em;
+        align-self: flex-start;
+        pointer-events: none;
+    }
+
+    .container:hover .box {
+        width: 100%;
+    }
+
+    .box-1 {
+        background-color: #15aabf;
+        transition-timing-function: linear;
+    }
+
+    .box-2 {
+        background-color: #12b886;
+        transition-timing-function: ease-in;
+    }
+
+    .box-3 {
+        background-color: #be4bdb;
+        transition-timing-function: ease-out;
+    }
+
+    .box-4 {
+        background-color: #f4511e;
+        transition-timing-function: ease-in-out;
+    }
+
+    .box-5 {
+        background-color: #607d8b;
+        transition-timing-function: cubic-bezier(0.36, 0, 0.66, -0.56);
+    }
+</style>

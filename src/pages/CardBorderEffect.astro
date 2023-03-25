@@ -1,0 +1,39 @@
+<html>
+    <body>
+        <main>
+            <div class="card"></div>
+        </main>
+    </body>
+</html>
+
+<style lang="scss">
+    @import '../styles/global.scss';
+
+    .card {
+        width: 400px;
+        height: 600px;
+        background: #444;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+
+    .card::after {
+        content: '';
+        position: absolute;
+        top: 80%;
+        left: -1px;
+        height: 40%;
+        width: 5px;
+        background: linear-gradient(transparent, rebeccaPurple, transparent);
+        transition: top, opacity;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+        opacity: 0;
+    }
+
+    .card:hover::after {
+        top: 10%;
+        opacity: 1;
+    }
+</style>

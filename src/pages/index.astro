@@ -1,0 +1,48 @@
+---
+import '../styles/global.scss';
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>CSS Effects</title>
+    </head>
+    <body>
+        <main>
+            <h1>Just a random list of fun CSS Effects I've picked up</h1>
+            <a href="SinWave">Sine Wave Animation</a>
+            <a href="CircleSpinner">Circle Spinner Animation</a>
+            <a href="TextSwapper">Text Swapper</a>
+        </main>
+    </body>
+</html>
+
+<style lang="scss">
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        background-color: #000;
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: large;
+        text-align: center;
+
+        h1 {
+            font-size: larger;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+            &:hover {
+                color: #00ff00;
+            }
+        }
+    }
+</style>
