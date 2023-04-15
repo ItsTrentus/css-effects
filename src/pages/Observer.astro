@@ -1,0 +1,97 @@
+---
+---
+
+<script>
+    const sections = document.querySelectorAll('section');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            console.log(entry);
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                // observer.unobserve(entry.target);
+            } else {
+                entry.target.classList.remove('show');
+            }
+        });
+    });
+
+    sections.forEach((section) => {
+        observer.observe(section);
+    });
+</script>
+
+<html>
+    <body>
+        <main>
+            <section class="hidden-left">
+                <div class="card">SECTION</div>
+            </section>
+            <section>
+                <div class="hidden-right card">SECTION</div>
+            </section>
+            <section>
+                <div class="hidden-left card">SECTION</div>
+            </section>
+            <section>
+                <div class="hidden-right card">SECTION</div>
+            </section>
+            <section>
+                <div class="hidden-left card">SECTION</div>
+            </section>
+        </main>
+    </body>
+</html>
+
+<style lang="scss">
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hidden-left {
+        opcacity: 0;
+        transform: translateX(-100%);
+        filter: blur(10px);
+    }
+
+    .hidden-right {
+        opcacity: 0;
+        transform: translateX(100%);
+        filter: blur(10px);
+    }
+
+    .show {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 1s ease-in-out;
+
+        filter: blur(0);
+    }
+
+    .card {
+        width: 300px;
+        height: 300px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        display: grid;
+        place-items: center;
+    }
+
+    main {
+        background-color: #222;
+        overflow: hidden;
+    }
+
+    section {
+        display: grid;
+        place-items: center;
+        place-content: center;
+        height: 60vh;
+        font-size: 3rem;
+    }
+</style>

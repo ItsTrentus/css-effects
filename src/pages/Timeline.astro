@@ -1,0 +1,348 @@
+<script>
+    function select(el: string, all = false) {
+        el = el.trim();
+        if (all) {
+            return [...document.querySelectorAll(el)];
+        } else {
+            return document.querySelector(el);
+        }
+    }
+
+    function isItemInView(item: HTMLElement) {
+        var rect = item.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    function callBackFunc() {
+        var items = select('.timeline li', true) as HTMLElement[];
+        items.forEach((item) => {
+            if (isItemInView(item) && !item.classList.contains('visible')) {
+                item.classList.add('visible');
+            }
+        });
+
+        checkIfAllVisible();
+    }
+
+    function checkIfAllVisible() {
+        var items = select('.timeline li', true) as HTMLElement[];
+        var allVisible = items.every((item) => item.classList.contains('visible'));
+        if (allVisible) {
+            document.removeEventListener('scroll', callBackFunc);
+            document.removeEventListener('resize', callBackFunc);
+            document.removeEventListener('DOMContentLoaded', callBackFunc);
+        }
+    }
+
+    document.addEventListener('scroll', callBackFunc);
+    document.addEventListener('resize', callBackFunc);
+    document.addEventListener('DOMContentLoaded', callBackFunc);
+</script>
+
+<html>
+    <body>
+        <main>
+            <div class="container">
+                <ul class="timeline">
+                    <div class="line"></div>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2001</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2002</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2003</h3>
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2004</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta adipisci aliquam rerum commodi officia reiciendis
+                            nemo! Fugit obcaecati magnam est omnis? Omnis sed, repellat distinctio, quo sit vitae ducimus deserunt iure mollitia
+                            temporibus, corrupti alias numquam aspernatur? Ut suscipit, pariatur laborum placeat quam veritatis! Veritatis reiciendis
+                            nemo odit ut aliquid facere fugit placeat, similique dignissimos eveniet sit quae excepturi ullam laudantium aliquam illo
+                            sed esse magni ex! Aspernatur consectetur itaque commodi impedit quos consequatur aliquid provident cum voluptatum sit
+                            corporis adipisci, consequuntur repellat alias modi illum placeat recusandae maiores.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2005</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2006</h3>
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2007</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2008</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2009</h3>
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2010</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2011</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2012</h3>
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2013</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2014</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2015</h3>
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2016</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2017</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </li>
+                    <li>
+                        <div class="bead"></div>
+                        <h3>2018</h3>
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </body>
+</html>
+
+<style lang="scss">
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        font-size: 62.5%;
+    }
+
+    body {
+        background-color: #4d4c59;
+        color: #fff;
+        font-family: 'PT Serif', Georgia, Cambria, 'Times New Roman', Times, serif;
+    }
+    h3 {
+        font-family: sans-serif;
+    }
+
+    .container {
+        max-width: 80%;
+        margin: 5rem auto;
+    }
+
+    .timeline {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        gap: 1rem;
+    }
+
+    .line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        background-color: #ccc;
+    }
+
+    .timeline li {
+        border-top: 1px solid #ccc;
+        position: relative;
+        width: 50%;
+        min-height: 10rem;
+        margin-bottom: 2rem;
+        padding: 2rem 0;
+        opacity: 0;
+        transform: translateX(-10%);
+    }
+
+    .bead {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: #ccc;
+        transform: translate(50%, -50%);
+    }
+
+    // //  Timeline Header
+    .timeline h3 {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+    }
+    // // Timeline Paragraph
+    .timeline p {
+        font-size: 2rem;
+        line-height: 2.8rem;
+    }
+    // /* the timeline's right side */
+    .timeline li:nth-child(even) {
+        align-self: flex-end;
+        text-align: right;
+        transform: translateX(10%);
+
+        .bead {
+            left: 0;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .timeline li.visible {
+        opacity: 1;
+        transform: translateX(0);
+        transition: transform 1s, opacity 1s;
+    }
+
+    // // 80% of screan width and auto margin left-right
+    // .container {
+    //     max-width: 80%;
+    //     margin: 50px auto;
+    // }
+
+    // .timeline {
+    //     position: relative;
+    //     display: flex;
+    //     flex-direction: column;
+    //     list-style: none;
+    //     padding-top: 20px;
+    //     padding-bottom: 20px;
+    //     gap: 1rem;
+    // }
+    // /* the timeline's center vertical line */
+    // .timeline:before {
+    //     content: '';
+    //     position: absolute;
+    //     top: 0;
+    //     bottom: 0;
+    //     left: 50%;
+    //     width: 1px;
+    //     background-color: #ccc;
+    // }
+    // .timeline li {
+    //     border-top: 1px solid #ccc;
+    //     position: relative;
+    //     width: 50%;
+    //     min-height: 100px;
+    //     margin-bottom: 20px;
+    //     padding: 20px 40px;
+    //     text-align: right;
+    //     transition: 0.3s;
+    //     opacity: 0;
+    //     transform: translateX(-10%);
+    // }
+    // /* the rounded mark on each timeline item */
+    // // BEAD
+    // .timeline li:before {
+    //     content: '';
+    //     width: 10px;
+    //     height: 10px;
+    //     position: absolute;
+    //     top: 0;
+    //     right: 0;
+    //     background: #ccc;
+    //     border-radius: 50%;
+    //     box-sizing: border-box;
+    //     transform: translate(50%, -50%);
+    // }
+    // // Styling the even (right) beads
+    // .timeline li:nth-child(even):before {
+    //     left: 0;
+    //     color: blue;
+    //     transform: translate(-50%, -50%);
+    // }
+    // .timeline li.visible {
+    //     opacity: 1;
+    //     transform: translateX(0);
+    //     transition: transform 1s, opacity 1s;
+    // }
+</style>

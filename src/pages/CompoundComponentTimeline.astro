@@ -1,0 +1,43 @@
+---
+import Timeline from '../components/Timeline';
+import { timelineData } from '../data/timelineData';
+---
+
+<script></script>
+
+<html>
+    <body>
+        <main>
+            <Timeline client:only>
+                {
+                    timelineData.map((item) => (
+                        <Timeline.Section>
+                            <Timeline.Title>{item.title}</Timeline.Title>
+                            <Timeline.Content>{item.content}</Timeline.Content>
+                        </Timeline.Section>
+                    ))
+                }
+            </Timeline>
+        </main>
+    </body>
+</html>
+
+<style lang="scss">
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        font-size: 62.5%;
+    }
+
+    body {
+        background-color: #4d4c59;
+        color: #fff;
+        font-family: 'PT Serif', Georgia, Cambria, 'Times New Roman', Times, serif;
+    }
+</style>
